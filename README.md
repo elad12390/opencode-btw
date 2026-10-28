@@ -3,7 +3,7 @@
 Ask a quick question about your OpenCode session without interrupting the main
 conversation—and keep asking follow-ups in a separate side panel.
 
-![A side conversation in the OpenCode terminal](assets/demo.gif)
+![A side conversation in the OpenCode terminal](https://raw.githubusercontent.com/elad12390/opencode-btw/main/assets/demo.gif)
 
 *Snapshots from a real, isolated OpenCode V2 session using fictional project
 context; waiting time is shortened.*
@@ -25,35 +25,28 @@ not exiting the terminal.
 ## Requirements
 
 - OpenCode **V2** terminal UI; tested with OpenCode 2.2.0.
-- [Bun](https://bun.sh/) for installing dependencies and running checks;
-  the project is tested with Bun 1.4.3.
 - A working model configured in OpenCode. Side questions use that model and
   may incur provider usage. This plugin does not support OpenCode Desktop.
 
 ## Install
 
-1. Clone the repository and install its dependencies:
-
-   ```sh
-   git clone https://github.com/elad12390/opencode-btw.git
-   cd opencode-btw
-   bun install --frozen-lockfile
-   ```
-
-2. Run `pwd` and add the resulting **absolute directory path** to the existing
-   `plugins` array in `~/.config/opencode/cli.json`. Preserve any other settings
-   and plugins already in the file:
+1. Add the npm package to the existing `plugins` array in
+   `~/.config/opencode/cli.json`. Preserve any other settings and plugins:
 
    ```jsonc
    {
      "$schema": "https://opencode.ai/v2/cli.json",
-     "plugins": ["/absolute/path/to/opencode-btw"]
+     "plugins": ["opencode-btw-sidechat"]
    }
    ```
 
-3. In an OpenCode terminal session, run `/reload` if needed, then type `/btw`.
+2. In an OpenCode terminal session, run `/reload` if needed, then type `/btw`.
    This plugin replaces the terminal's built-in one-shot `/btw` while enabled.
    Remove its entry from `cli.json` to restore the built-in command.
+
+For local development, clone the repository, run `bun install --frozen-lockfile`
+and `bun run build`, then use the checkout's absolute directory path instead of
+the npm package name. Rebuild after changing the plugin source.
 
 ## Use
 
@@ -108,11 +101,15 @@ reads through provider usage data or server diagnostics.
 bun install --frozen-lockfile
 bun run typecheck
 bun test
+bun run build
+bun run check:package
 ```
 
 The tests exercise side-chat state, focus, commands, and the real OpenTUI
-renderer without requiring model credentials. See [CONTRIBUTING.md](CONTRIBUTING.md)
-and [SECURITY.md](SECURITY.md).
+renderer without requiring model credentials. Development requires
+[Bun](https://bun.sh/); the project is tested with Bun 1.4.3. See the
+[contribution guide](https://github.com/elad12390/opencode-btw/blob/main/CONTRIBUTING.md)
+and [security policy](https://github.com/elad12390/opencode-btw/blob/main/SECURITY.md).
 
 ## License
 

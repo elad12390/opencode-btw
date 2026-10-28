@@ -2,22 +2,40 @@
   "name": "opencode-btw-sidechat",
   "version": "0.1.0",
   "description": "A multi-turn /btw side chat for the OpenCode terminal UI",
-  "private": true,
   "license": "MIT",
-  "repository": "https://github.com/elad12390/opencode-btw.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elad12390/opencode-btw.git"
+  },
+  "homepage": "https://github.com/elad12390/opencode-btw#readme",
+  "bugs": "https://github.com/elad12390/opencode-btw/issues",
   "keywords": ["opencode", "plugin", "tui", "sidechat"],
   "type": "module",
+  "files": ["dist", "assets/demo.gif", "THIRD_PARTY_NOTICES.md"],
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
-    "./tui": "./src/tui.tsx"
+    "./tui": "./dist/tui.js"
   },
   "scripts": {
+    "build": "bun run scripts/build.ts",
+    "check:package": "bun run scripts/check-package.ts",
+    "prepack": "bun run build",
     "test": "bun test",
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "@opencode/plugin": "2.2.0",
+    "@opencode/theme": "2.2.0"
+  },
+  "peerDependencies": {
+    "@opentui/core": "0.7.0",
+    "@opentui/solid": "0.7.0",
+    "solid-js": ">=1.9.0"
+  },
   "devDependencies": {
     "@opencode/client": "2.2.0",
-    "@opencode/plugin": "2.2.0",
-    "@opencode/theme": "2.2.0",
     "@opentui/core": "0.7.0",
     "@opentui/keymap": "0.7.0",
     "@opentui/solid": "0.7.0",
