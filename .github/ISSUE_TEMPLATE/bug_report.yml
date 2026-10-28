@@ -1,0 +1,19 @@
+name: Bug report
+description: Report a reproducible problem with the side chat
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened?
+      description: Include the expected behavior and the steps to reproduce it.
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: OpenCode and terminal versions
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Remove credentials, personal paths, and private conversation content before posting.

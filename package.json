@@ -1,0 +1,29 @@
+{
+  "name": "opencode-btw-sidechat",
+  "version": "0.1.0",
+  "description": "A multi-turn /btw side chat for the OpenCode terminal UI",
+  "private": true,
+  "license": "MIT",
+  "repository": "https://github.com/elad12390/opencode-btw.git",
+  "keywords": ["opencode", "plugin", "tui", "sidechat"],
+  "type": "module",
+  "exports": {
+    "./tui": "./src/tui.tsx"
+  },
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@opencode/client": "2.2.0",
+    "@opencode/plugin": "2.2.0",
+    "@opencode/theme": "2.2.0",
+    "@opentui/core": "0.7.0",
+    "@opentui/keymap": "0.7.0",
+    "@opentui/solid": "0.7.0",
+    "@types/bun": "1.4.3",
+    "@xterm/headless": "6.0.0",
+    "solid-js": "1.9.15",
+    "typescript": "6.0.2"
+  }
+}
